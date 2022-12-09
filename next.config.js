@@ -4,7 +4,7 @@
  * @type {import('next').NextConfig}
  **/
 const nextConfig = {
-  basePath: '/startmyday.github.io',
+  basePath: '',
 }
 
 module.exports = nextConfig
