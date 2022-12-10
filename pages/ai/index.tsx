@@ -37,10 +37,11 @@ const AI = (props: any) => {
 
   return <>
     <div>
+      bug fixed bro!!!!
       <form onSubmit={onSubmit}>
         <input type="text" onChange={onChange} />
       </form>
-      {!!src && <img src={src} />}
+      {!!src && <img key={src} src={src} />}
     </div>
     <div>
       <Link href="/">Home</Link>
