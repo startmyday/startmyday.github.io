@@ -4,6 +4,9 @@ export default function Home() {
   return (
     <>
       <div>
+        <Link href="/manage">Manage</Link>
+      </div>
+      <div>
         <Link href="/ai">AI</Link>
       </div>
     </>
