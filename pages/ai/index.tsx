@@ -40,6 +40,7 @@ const AI = (props: any) => {
       <form onSubmit={onSubmit}>
         <input type="text" onChange={onChange} />
       </form>
+      {!!src && <img src={src} />}
     </div>
     <div>
       <Link href="/">Home</Link>
