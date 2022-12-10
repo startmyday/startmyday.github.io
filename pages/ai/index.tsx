@@ -1,11 +1,12 @@
 import Link from 'next/link'
 import { FormEvent, useState } from 'react';
+import { useGenerateImageService } from '../../services/openai';
+import style from './AI.module.css'
 
-const AI = (props: any) => {
-  // console.log(props);
-
+const AI = () => {
   const [prompt, setPrompt] = useState<string>('')
-  const [src, setSrc] = useState<string>('')
+
+  const { loading, data: src, error, fetchImage } = useGenerateImageService();
 
   const onChange = (event: FormEvent<HTMLInputElement>) => {
     setPrompt(event.currentTarget.value);
@@ -13,40 +14,22 @@ const AI = (props: any) => {
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    try {
-      fetch("https://aliveapi.cyclic.app/generateimage", {
-        "headers": {
-          "content-type": "application/json"
-        },
-        "body": JSON.stringify({
-          prompt
-        }),
-        "method": "POST",
-      }).then(async (res) => {
-        const response = await res.json();
-
-        if (response.success) {
-          setSrc(response.data)
-        }
-      })
-    } catch (error) {
-
-    }
+    fetchImage({ prompt });
   }
 
-  return <>
-    <div>
-      bug fixed bro!!!!
-      <form onSubmit={onSubmit}>
-        <input type="text" onChange={onChange} />
-      </form>
-      {!!src && <img key={src} src={src} />}
+  const shiftUp = loading || !!src;
+
+  return (
+    <div className={style.ai}>
+      <div className={style.center}>
+        <form onSubmit={onSubmit} style={{ marginTop: shiftUp ? 0 : '300px' }} className={style.form}>
+          <input autoFocus type="text" onChange={onChange} className={style.prompt} placeholder="What's on your mind?" />
+        </form>
+        {!!src && !loading && <div className={style.content}><img key={src} src={src} /></div>}
+        {loading && <div className={style.content}><span className={style.loading}>Loading...</span></div>}
+      </div>
     </div>
-    <div>
-      <Link href="/">Home</Link>
-    </div>
-  </>;
+  )
 }
 
 AI.getInitialProps = ({ query }: any) => {
