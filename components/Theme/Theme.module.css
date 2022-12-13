@@ -1,0 +1,42 @@
+.theme {
+  position: fixed;
+  bottom: 0;
+  padding: 5px;
+  /* border: 1px solid #fff; */
+}
+
+.selector {
+  width: 100hh;
+  height: auto;
+}
+
+.closeContainer {
+  text-align: right;
+}
+
+.close {
+  padding: 10px;
+  font-size: 30px;
+  font-weight: 900;
+  transform: rotate(45deg);
+  display: inline-block;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  display: inline-block;
+  border: 1px solid seashell;
+  cursor: pointer;
+}
+
+.change {
+  cursor: pointer;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  padding: 10px;
+  display: inline-block;
+}
