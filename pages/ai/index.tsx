@@ -6,7 +6,7 @@ import style from './AI.module.css'
 const AI = () => {
   const [prompt, setPrompt] = useState<string>('')
 
-  const { loading, data: src, error, fetchImage } = useGenerateImageService();
+  const { loading, data: srcArr, error, fetchImage } = useGenerateImageService();
 
   const onChange = (event: FormEvent<HTMLInputElement>) => {
     setPrompt(event.currentTarget.value);
@@ -17,7 +17,7 @@ const AI = () => {
     fetchImage({ prompt });
   }
 
-  const shiftUp = loading || !!src;
+  const shiftUp = loading || !!srcArr;
 
   return (
     <div className={style.ai}>
@@ -25,9 +25,11 @@ const AI = () => {
         <form onSubmit={onSubmit} style={{ marginTop: shiftUp ? 0 : '300px' }} className={style.form}>
           <input autoFocus type="text" onChange={onChange} className={style.prompt} placeholder="What's on your mind?" />
         </form>
-        {!!src && !loading && <div className={style.content}><img key={src} src={src} /></div>}
-        {loading && <div className={style.content}><span className={style.loading}>Loading...</span></div>}
       </div>
+      {!!srcArr && !loading && <div>{
+        srcArr.map(({ url }) => (<img className={style.image} key={url} src={url} />))
+      }</div>}
+      {loading && <div><span className={style.loading}>Loading...</span></div>}
     </div>
   )
 }

@@ -9,6 +9,9 @@ export default function Home() {
       <div>
         <Link href="/ai">AI</Link>
       </div>
+      {/* <div>
+        <Link href="/notes">Notes</Link>
+      </div> */}
     </>
   )
 }

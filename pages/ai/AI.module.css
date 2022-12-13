@@ -37,8 +37,10 @@
     transition: all 700ms;
 }
 
-.content {
-    margin-top: 100px;
+.image {
+    width: 25%;
+    height: auto;
+    border: 2px solid #fff;
 }
 
 .loading {
