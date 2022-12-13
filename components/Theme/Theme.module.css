@@ -20,6 +20,7 @@
   font-weight: 900;
   transform: rotate(45deg);
   display: inline-block;
+  cursor: pointer;
 }
 
 .box {
