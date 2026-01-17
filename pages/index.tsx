@@ -10,7 +10,7 @@ export default function Home() {
         <Link href="/ai">AI</Link>
       </div>
       <div>
-        <Link href="/tracker">Tracker</Link>
+        <Link href="/tracker">Tracker-</Link>
       </div>
       {/* <div>
         <Link href="/notes">Notes</Link>
